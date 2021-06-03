@@ -9,12 +9,12 @@ import com.ossystem.entity.User;
 import com.ossystem.service.UserService;
 
 @SpringBootTest
-class OSsystemApplicationTests {
+class OSsRoleUnitTests {
 
   private final UserService userService;
 
   @Autowired
-  OSsystemApplicationTests(UserService userService) {
+  OSsRoleUnitTests(UserService userService) {
       this.userService = userService;
   }
 

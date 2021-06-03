@@ -1,8 +1,11 @@
 package com.ossystem.entity;
 
+import javax.persistence.Entity;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("Role")
+@Entity
 public class Role {
   private int    id;
   private String name;

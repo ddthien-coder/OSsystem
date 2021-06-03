@@ -3,6 +3,8 @@ package com.ossystem.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+
 import org.apache.ibatis.type.Alias;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Alias("User")
+@Entity
 public class User implements UserDetails {
   private int               id;
   private Role              role;
