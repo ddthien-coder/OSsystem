@@ -13,11 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Alias("User")
 public class User implements UserDetails {
   private int               id;
-  private String            email;
+  private Role              role;
   private String            username;
   private String            password;
-  private List<Role>        roles;
-  private static final long serialVersionUID = 1L;
+  private String            synopsis;
+  private String            picture;
 
   public int getId() {
     return id;
@@ -27,14 +27,13 @@ public class User implements UserDetails {
     this.id = id;
   }
 
-  public String getEmail() {
-    return email;
+  public Role getRole() {
+    return role;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setRole(Role role) {
+    this.role = role;
   }
-
   @Override
   public String getUsername() {
     return username;
@@ -53,14 +52,21 @@ public class User implements UserDetails {
     this.password = password;
   }
 
-  public List<Role> getRoles() {
-    return roles;
+  public String getSynopsis() {
+    return synopsis;
   }
 
-  public void setRoles(List<Role> roles) {
-    this.roles = roles;
+  public void setSynopsis(String synopsis) {
+    this.synopsis = synopsis;
   }
 
+  public String getPicture() {
+    return picture;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
   @Override
   @JsonIgnore
   public boolean isEnabled() {
@@ -89,9 +95,7 @@ public class User implements UserDetails {
   @JsonIgnore
   public List<GrantedAuthority> getAuthorities() {
     List<GrantedAuthority> authorities = new ArrayList<>();
-    for (Role role : roles) {
-      authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
-    }
+    authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
     return authorities;
   }
 }
